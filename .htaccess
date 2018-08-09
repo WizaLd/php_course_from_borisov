@@ -1,0 +1,5 @@
+#Настройки сервера
+Options Indexes
+DirectoryIndex index.php
+# Настройки РHP
+php_flag short_open_tag on
