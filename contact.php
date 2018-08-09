@@ -1,3 +1,14 @@
+<?php
+$size = ini_get("post_max_size"); // 8M
+$letter = $size{strlen($size)-1};
+$size = (int)$size;
+switch(strtoupper($letter)):
+  case 'G': $size /= 1024; break;
+  case 'M': $size; break;
+  case 'K': $size *= 1024;
+endswitch;
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -36,6 +47,7 @@
       <br />
       <input type='submit' value='Отправить' />
     </form>
+    <p>Максимальный размер отправляемых данных <?php echo "$size $letter"; ?>byte.</p>
     <!-- Область основного контента -->
   </div>
   <div id="nav">

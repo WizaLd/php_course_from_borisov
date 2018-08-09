@@ -3,6 +3,47 @@ setlocale(LC_ALL, "russian");
 $day = strftime('%d');
 $mon = strftime('%B');
 $year = strftime('%Y');
+
+/*
+* Получаем текущий час в виде строки от 00 до 23
+* и приводим строку к целому числу от 0 до 23
+*/
+
+$hour = (int)strftime('%H');
+$welcome = 'Доброй ночи';
+
+if ($hour >= 6 && $hour < 12):
+    $welcome = 'Доброе утро';
+elseif ($hour >= 12 && $hour < 18):
+    $welcome = 'Добрый день';
+elseif ($hour >= 18 && $hour < 23):
+    $welcome = 'Добрый вечер';
+endif;
+
+$leftMenu = [
+    ['link'=>'Домой', 'href'=>'index.php'],
+    ['link'=>'О нас', 'href'=>'about.php'],
+    ['link'=>'Контакты', 'href'=>'contact.php'],
+    ['link'=>'Таблица умножения', 'href'=>'table.php'],
+    ['link'=>'Калькулятор', 'href'=>'calc.php'],
+];
+
+function drawMenu($menu, $vertical=true) {
+
+    $style = "";
+
+    if(!$vertical) {
+        $style = " style='display:inline;margin-right:15px'";
+    }
+    echo "<ul>";
+    foreach($menu as $item) {
+        echo "<li$style>";
+        echo "<a href={$item['href']}>{$item['link']}</a>";
+        echo "</li>";
+    }
+    echo "</ul>";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +66,7 @@ $year = strftime('%Y');
 
   <div id="content">
     <!-- Заголовок -->
-    <h1>Добро пожаловать на наш сайт!</h1>
+    <h1><?= $welcome ?>, Гость!</h1>
     <!-- Заголовок -->
     <!-- Область основного контента -->
     <h3>
@@ -49,23 +90,13 @@ $year = strftime('%Y');
     <!-- Навигация -->
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
-    <ul>
-      <li><a href='index.php'>Домой</a>
-      </li>
-      <li><a href='about.php'>О нас</a>
-      </li>
-      <li><a href='contact.php'>Контакты</a>
-      </li>
-      <li><a href='table.php'>Таблица умножения</a>
-      </li>
-      <li><a href='calc.php'>Калькулятор</a>
-      </li>
-    </ul>
+      <?php drawMenu($leftMenu);?>
     <!-- Меню -->
     <!-- Навигация -->
   </div>
   <div id="footer">
     <!-- Нижняя часть страницы -->
+      <?php drawMenu($leftMenu, false);?>
     &copy; Супер Мега Веб-мастер, 2000 &ndash; <?= $year; ?>
     <!-- Нижняя часть страницы -->
   </div>
