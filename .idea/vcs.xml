@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/borisov_php_course" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/php_course_borisov" vcs="Git" />
   </component>
 </project>
