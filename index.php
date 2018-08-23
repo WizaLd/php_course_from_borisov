@@ -1,6 +1,7 @@
 <?php
 require_once 'inc/lib.inc.php';
 require_once 'inc/data.inc.php';
+require_once 'inc/cookie.inc.php';
 
 // Инициализация заголовков страницы
 $title = 'Сайт нашей школы';
@@ -47,6 +48,15 @@ switch($id) {
   <div id="content">
     <!-- Заголовок -->
     <h1><?php echo $header ?></h1>
+      <blockquote>
+          <?php
+            if($visitCounter === 0) {
+                 echo "Спасибо, что зашли на огонек;";
+            } else {
+                echo "Вы зашли к нам $visitCounter раз<br>";
+                echo "Последнее посещение: $lastVisit";
+            }
+          ?></blockquote>
     <!-- Заголовок -->
     <!-- Область основного контента -->
       <?php
